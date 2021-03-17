@@ -1,4 +1,4 @@
-package Projecto3;
+package Project3;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -63,7 +63,6 @@ public class MainPanel extends JPanel implements Runnable, ActionListener,
             ball.setVelocity ( 0 );
         else
             ball.setVelocity ( 3 );
-
     }
 
     public void initComponents ()

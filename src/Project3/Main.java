@@ -1,4 +1,4 @@
-package Projecto3;
+package Project3;
 
 import Utils.Constants;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package Projecto3;
+package Project2;
 
 import Utils.Constants;
 import java.awt.Color;
@@ -13,34 +13,29 @@ public class Ball
 
     private int size;
     private Color color;
-    private int velocity = 3;
+    private int velocity = 5;
     private int directionX = 1;
     private int positionX = 50;
-    private int positionY = 100;
-    private boolean visible = true;
 
-    public Ball ( int posY )
+    public Ball ()
     {
         this.size = 100;
-        this.color = Color.BLUE;
-        this.velocity = 3;
+        this.color = Color.RED;
+        this.velocity = 5;
         this.directionX = 1;
         this.positionX = 50;
-        this.positionY = posY;
-        this.visible = true;
     }
 
-    public Ball ( Color color, int size, int posX )
+    public Ball ( Color color, int size )
     {
         this.color = color;
         this.size = size;
-        this.positionX = posX;
     }
 
     public void drawBall ( Graphics2D g2D )
     {
         g2D.setColor ( color );
-        g2D.fillOval ( positionX, positionY, size, size );
+        g2D.fillOval ( positionX, 100, size, size );
         keepOnScreenBounds ();
         moveBall ();
     }
@@ -53,6 +48,7 @@ public class Ball
     // keep ball in the screen bounds
     private void keepOnScreenBounds ()
     {
+
         if ( positionX <= 0
              || positionX + size >= Constants.WINDOW_WIDTH )
             invertDirectionX ();
@@ -111,26 +107,6 @@ public class Ball
     public void setPositionX ( int positionX )
     {
         this.positionX = positionX;
-    }
-
-    public int getPositionY ()
-    {
-        return positionY;
-    }
-
-    public void setPositionY ( int positionY )
-    {
-        this.positionY = positionY;
-    }
-
-    public boolean isVisible ()
-    {
-        return visible;
-    }
-
-    public void setVisible ( boolean visible )
-    {
-        this.visible = visible;
     }
 
 }

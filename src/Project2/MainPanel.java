@@ -1,4 +1,4 @@
-package Projecto2;
+package Project2;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
