@@ -1,4 +1,4 @@
-package Projecto1;
+package Projecto2;
 
 import Utils.Constants;
 import java.awt.Color;
@@ -14,7 +14,7 @@ public class Main extends JFrame
 
     public Main () throws HeadlessException
     {
-        super ( "PROJECTO 1" );
+        super ( "PROJECTO 2" );
 
         setSize ( Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT );
         setResizable ( false );

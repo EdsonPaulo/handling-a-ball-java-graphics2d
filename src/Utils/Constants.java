@@ -1,4 +1,4 @@
-package Projecto1;
+package Utils;
 
 public final class Constants
 {

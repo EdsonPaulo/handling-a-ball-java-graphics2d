@@ -1,4 +1,4 @@
-package Projecto1;
+package Projecto3;
 
 import Utils.Constants;
 import java.awt.Color;
@@ -14,7 +14,7 @@ public class Main extends JFrame
 
     public Main () throws HeadlessException
     {
-        super ( "PROJECTO 1" );
+        super ( "PROJECTO 3" );
 
         setSize ( Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT );
         setResizable ( false );
@@ -28,6 +28,7 @@ public class Main extends JFrame
         mainPanel.setBackground ( Color.WHITE );
 
         add ( mainPanel );
+        addMouseListener ( mainPanel );
         setVisible ( true );
     }
 

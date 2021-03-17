@@ -1,4 +1,4 @@
-package Projecto1;
+package Projecto2;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -26,6 +26,7 @@ public class MainPanel extends JPanel implements Runnable, ChangeListener,
 
     private Ball ball;
     private JSlider ballSizeControl;
+    private JSlider ballVelocityControl;
     private JButton ballColorControl;
     private JPanel tools;
 
@@ -34,6 +35,9 @@ public class MainPanel extends JPanel implements Runnable, ChangeListener,
         setLayout ( new BorderLayout () );
         initComponents ();
         addComponents ();
+
+        Thread mainThread = new Thread ( this );
+        mainThread.start ();
     }
 
     public void initComponents ()
@@ -42,9 +46,10 @@ public class MainPanel extends JPanel implements Runnable, ChangeListener,
         tools = new JPanel ();
         ballSizeControl = new JSlider ( 50, 700, 50 );
         ballSizeControl.addChangeListener ( this );
+        ballVelocityControl = new JSlider ( 1, 20, 1 );
+        ballVelocityControl.addChangeListener ( this );
         ballColorControl = new JButton ( "Change Ball Color" );
         ballColorControl.addActionListener ( this );
-        
     }
 
     public void addComponents ()
@@ -53,6 +58,8 @@ public class MainPanel extends JPanel implements Runnable, ChangeListener,
         tools.add ( ballSizeControl );
         tools.add ( new JLabel ( " Ball Color: " ) );
         tools.add ( ballColorControl );
+        tools.add ( new JLabel ( " Ball Velocity: " ) );
+        tools.add ( ballVelocityControl );
         this.add ( tools, BorderLayout.NORTH );
     }
 
@@ -62,7 +69,8 @@ public class MainPanel extends JPanel implements Runnable, ChangeListener,
         while ( true )
             try
             {
-                Thread.sleep ( 24 );
+                repaint ();
+                Thread.sleep ( 8 );
             }
             catch ( InterruptedException ex )
             {
@@ -79,19 +87,20 @@ public class MainPanel extends JPanel implements Runnable, ChangeListener,
 
         g2D.setRenderingHint ( RenderingHints.KEY_ANTIALIASING,
                                RenderingHints.VALUE_ANTIALIAS_ON );
-
-        ball.drawBall ( g2D, 50, 50 );
+        ball.drawBall ( g2D );
     }
 
     @Override
     public void stateChanged ( ChangeEvent e )
     {
         if ( e.getSource () == ballSizeControl )
-        {
             this.ball.setSize ( ballSizeControl.
                     getValue () );
-            repaint ();
-        }
+        else if ( e.getSource () == ballVelocityControl )
+            this.ball.setVelocity ( ballVelocityControl.
+                    getValue () );
+        repaint ();
+
     }
 
     @Override
